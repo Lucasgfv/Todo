@@ -1,0 +1,1 @@
+mas antes disso precisaria saber se seria possivel temporariamente armazenar os logins tbm pois pretendo fazer uma tela de login na pagina home, gostaria tbm que os dados fossem armazenados de forma a usar o postgress no diocker poderia me ajudar a configuralo 

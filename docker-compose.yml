@@ -1,0 +1,33 @@
+#arquio de configuracao do docker
+version: '3.9'
+
+services:
+  postgres: 
+    image: bitnami/postgresql:latest
+    ports: 
+      - '5432:5432'
+    environment:
+      - POSTEGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=polls
+    volumes:
+      - polls_pg_data:/bitnami/postgresql
+
+  redis:
+    image: bitnami/redis:latest
+    environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'polls_redis_data:/bitnami/redis/data'
+
+volumes:
+  polls_pg_data:
+  polls_redis_data:
+
+#to run: docker compose up -d
+#ver se esta em execuca: docker ps
+#colocar eles para rodarem para poder realizar foneccoes: docker logs idDoContainer
+#Problema principal apos colocar ele pra rodar nao estou conseguindo acessar para poder criar minhas tabelas, tem que resolver a coneccao primeiro
+

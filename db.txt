@@ -1,0 +1,20 @@
+Crie apenas uma tabela chamada tasks. A estrutura recomendada seria esta:
+
+    - id: SERIAL PRIMARY KEY - Um número único para cada tarefa, gerado automaticamente.
+
+    - title: VARCHAR(255) NOT NULL - O título da tarefa, não pode ser vazio.
+
+    - description: TEXT - A descrição da tarefa, pode ser vazia.
+
+    - status: VARCHAR(50) NOT NULL DEFAULT 'pending' - O estado da tarefa. Poderia conter textos como 'pending', 'done'. O valor padrão será 'pending' quando uma nova tarefa for criada.
+
+    - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP - Data e hora de quando a tarefa foi criada.
+
+Como Lidar com Tarefas "Concluídas" e "Apagadas"?
+
+    Para concluir uma tarefa: Você simplesmente atualiza a coluna status daquela tarefa de 'pending' para 'done'. É uma única operação UPDATE, muito rápida e segura.
+
+    Para apagar uma tarefa: Você tem duas opções:
+        Apagar Permanentemente (Hard Delete): Usar o comando DELETE FROM tasks WHERE id = ?. A tarefa some para sempre. Para um app simples, isso é suficiente.
+
+        Marcar como Apagada (Soft Delete): Adicionar um status 'deleted' na coluna status. A tarefa continua no banco, mas sua aplicação não a mostraria na lista principal.
